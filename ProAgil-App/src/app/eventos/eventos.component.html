@@ -1,0 +1,146 @@
+<div class="container mt-5 mb-3" style="font-size: 20px;">
+  Filtro
+  <br>
+  <input type="text" class="form-control col-4" placeholder="Tema" (input)="inputFilterChange($event)">
+</div>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+          <button class="btn btn-outline-primary" (click)="alterarImagem()">
+            <i class="{{ mostrarImagem ? 'fa fa-eye-slash' : 'fa fa-eye'}}"></i>
+          </button>
+        </th>
+        <th>ID</th>
+        <th>Tema</th>
+        <th>Local</th>
+        <th>Lote</th>
+        <th>Data Evento</th>
+        <th>Quantidade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let evento of dataFilter">
+        <td>
+          <img *ngIf="mostrarImagem" src="../../assets/imgs/img03.jpg"
+          [style.width.px]=45>
+        </td>
+        <td> {{ evento.id }}</td>
+        <td> {{ evento.tema }} </td>
+        <td> {{ evento.local }} </td>
+        <td> 
+          <div *ngIf="!evento.lotes.length">
+            Não Informado
+          </div>
+          <div *ngIf="evento.lotes.length">
+            {{ evento.lotes[0].nome }}
+          </div> 
+        </td>
+        <td> {{ evento.dataEvento | DateTimeFormatPipe }} </td>
+        <td> {{ evento.qtdPessoas }} </td>
+        <td>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-primary" (click)="openModal(template)" tooltip="Editar">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" tooltip="Excluir">
+              <i class="fa fa-eraser"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal de Gabriel</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Este é um Modal!
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <label for="" class="mb-0" style="font-size: 30px;">Filtro</label>
+      <input class="form-control" placeholder="Tema" type="text" (input)="inputFilterChange($event)">
+    </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th>ID</th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Qtd Pessoas</th>
+      <th>Lote</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="eventos && eventos.length">
+    <tr *ngFor="let evento of eventosFiltrados">
+      <td> {{ evento.eventoId }} </td>
+      <td> {{ evento.tema | uppercase}} </td>
+      <td> {{ evento.local }} </td>
+      <td> {{ evento.dataEvento }} </td>
+      <td> {{ evento.qtdPessoas }} </td>
+      <td> {{ evento.lote }} </td>
+      <td>
+        <button class="btn btn-success">Editar</button>
+        <button class="btn btn-danger ml-2">Excluir</button>
+      </td>
+    </tr>
+  </tbody> -->
+<!-- </table> -->
